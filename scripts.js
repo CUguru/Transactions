@@ -98,21 +98,24 @@ $(document).ready(function() {
 				'</td></tr>');
 		});
 
-		var myTable = $('#table').DataTable();
+		var myTable = $('#table').DataTable({
+			'paging': false,
+			'ordering': false
+		});
 		$('#search-1').on('click', function() {
-			myTable.search( nameArray[0] ).draw();
+			myTable.columns( 5 ).search( nameArray[0] ).draw();
 		});
 		$('#search-2').on('click', function() {
-			myTable.search( nameArray[1] ).draw();
+			myTable.columns( 5 ).search( nameArray[1] ).draw();
 		});
 		$('#search-3').on('click', function() {
-			myTable.search( nameArray[2] ).draw();
+			myTable.columns( 5 ).search( nameArray[2] ).draw();
 		});
 		$('#search-4').on('click', function() {
-			myTable.search( nameArray[3] ).draw();
+			myTable.columns( 5 ).search( nameArray[3] ).draw();
 		});
 		$('#reset').on('click', function() {
-			myTable.search( " " ).draw();
+			myTable.columns( 5 ).search( " " ).draw();
 		});
 	}
 
