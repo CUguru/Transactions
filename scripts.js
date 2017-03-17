@@ -101,6 +101,7 @@ $(document).ready(function() {
 		var myTable = $('#table').DataTable({
 			'paging': false,
 			'ordering': false,
+			"info":     false,
 			"columns": [
     			{ "width": "28%" },
     			null,
