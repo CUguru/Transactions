@@ -5,3 +5,36 @@ body {
 .category {
 	text-transform: lowercase;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+td {
+	border-left: 2px solid #e1e8ed;
+	border-right: 2px solid #e1e8ed;
+	text-align: left;
+	padding: 5px 15px;
+	color: rgba(49, 49, 50, 0.7);
+}
+
+th {
+	text-align: left;
+	padding: 20px;
+	background-color: #e1e8ed;
+	color: rgba(49, 49, 50, 0.7);
+}
+tbody {
+	border-bottom: 2px solid #e1e8ed;
+}
+
+input {
+	width: 100%;
+	border: 1px solid black;
+}
+
+#balance {
+	text-align: center;
+	height: 100px;
+	background-color: red;
+}
