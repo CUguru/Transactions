@@ -3,32 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Transactions</title>
-		<!-- <link rel="stylesheet" href="styles/style.css"> -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 	<main>
 	<button type="button" id="button">View Transactions</button>
-		<p id="error"></p>
-		<table>
-			<tr>
+	<button type="button" data-filter='4163ef9a-4181-4fdd-aa24-76fd2097c30c'>Account 1</button>
+	<button type="button" data-filter='6408eb5b-e410-4b35-a549-f96d24c2df2a'>Account 1</button>
+	<button type="button" data-filter='9c6afa54-0301-4df6-a1ad-b965b9abf325'>Account 1</button>
+	<button type="button" data-filter='c0f43f25-1b2e-453b-900b-4a7f6482d00a"'>Account 1</button>
+		<div id="results"></div>
+		<table id="table" class="container">
+			<tr id="headers">
 				<th>Transaction Name</th>
 				<th>Category</th>
-				<th>Amount</th>
 				<th>Transaction Kind</th>
+				<th>Amount</th>
+				<th>Date</th>
 			</tr>
-			<tr>
-			    <td>name one</td>
-			    <td>Smith</td> 
-			    <td>50</td>
-			  </tr>
-			  <tr>
-			    <td>Eve</td>
-			    <td>Jackson</td> 
-			    <td>94</td>
-			  </tr>
 		</table>
 	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.amd.min.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="scripts.js"></script>
 	</body>
