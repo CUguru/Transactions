@@ -14,11 +14,11 @@ $(document).ready(function() {
 
 	// function that gets passed in once the ajax call is done
 	function parseData(results) {
-		$('#results').prepend('<button type="text" name="search" id="search-1">account 1</button>'+
-			'<button type="text" name="search" id="search-2">account 2</button>'+
-			'<button type="text" name="search" id="search-3">account 3</button>'+
-			'<button type="text" name="search" id="search-4">account 4</button>'+
-			'<button type="text" name="reset" id="reset">Reset</button>');
+		$('#results').prepend('<div class="buttons"><button type="text" name="search" id="search-1">HIGH INTEREST<br>TFSA SAVINGS</button>'+
+			'<button type="text" name="search" id="search-2">COMPANION<br>SAVINGS</button>'+
+			'<button type="text" name="search" id="search-3">UNLIMITED<br>CHEQUING</button>'+
+			'<button type="text" name="search" id="search-4">BORDERLESS<br>PLAN</button>'+
+			'<button type="text" name="reset" id="reset">Reset<br></button></div>');
 		$('#balance-and-header').append('<div id="balance"></div>');
 
 		// make the initial table header
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		var nameArray = getAccountNames(accounts);
 
 		// append the balance to the page
-		$('#balance').append('<span>TOTAL BALANCE</span><br><span>$ '+sum+'</span>');
+		$('#balance').append('<span id="balance-title">TOTAL BALANCE</span><br><span id="balance-amount">$ '+sum+'</span>');
 
 		$.each(transactions, function() {
 			// console.log(this.accountId);
@@ -91,8 +91,7 @@ $(document).ready(function() {
 				accountName = nameArray[3];
 			}
 
-			$('.list').append('<tr className="'+this.transactionDate+" "+this.accountId+'"><td className="description">'
-				+this.description+'</td><td className="category">'+(this.category)+'</td>'+
+			$('.list').append('<tr><td className="description">'+this.description+'</td><td className="category">'+(this.category)+'</td>'+
 				'<td className="kind">'+transactionKind+'</td><td className="amount">$ '+this.amount+
 				'</td><td className="date">'+this.transactionDate+'</td><td className="account">'+accountName+
 				'</td></tr>');
