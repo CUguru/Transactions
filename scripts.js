@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 	// function that gets passed in once the ajax call is done
 	function parseData(results) {
-		$('main').append('<button type="text" name="search" id="search-1">account 1</button>'+
+		$('#results').prepend('<button type="text" name="search" id="search-1">account 1</button>'+
 			'<button type="text" name="search" id="search-2">account 2</button>'+
 			'<button type="text" name="search" id="search-3">account 3</button>'+
 			'<button type="text" name="search" id="search-4">account 4</button>'+
@@ -100,7 +100,15 @@ $(document).ready(function() {
 
 		var myTable = $('#table').DataTable({
 			'paging': false,
-			'ordering': false
+			'ordering': false,
+			"columns": [
+    			{ "width": "28%" },
+    			null,
+    			null,
+    			null,
+    			null,
+    			{ "width": "15%" }
+    		]
 		});
 		$('#search-1').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[0] ).draw();

@@ -12,6 +12,7 @@ table {
 }
 td {
 	border-left: 2px solid #e1e8ed;
+	border-bottom: 1px solid #e1e8ed;
 	border-right: 2px solid #e1e8ed;
 	text-align: left;
 	padding: 5px 15px;
