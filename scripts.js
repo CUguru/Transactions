@@ -19,15 +19,18 @@ $(document).ready(function() {
 			'<button type="text" name="search" id="search-3">UNLIMITED<br>CHEQUING</button>'+
 			'<button type="text" name="search" id="search-4">BORDERLESS<br>PLAN</button>'+
 			'<button type="text" name="reset" id="reset">Reset<br></button></div>');
-		$('#balance-and-header').append('<div id="balance"></div>');
+		$('#balance-and-header').append('<div class="person"><p>Welcome<br><span class="name">Chibuzo</span></p>'+
+			'</div><div id="balance"></div><div class="date-and-time"><p class="date">Thursday, 3rd April, 2017'+
+			'<br><span>7:32PM</span></p></div>');
 
 		// make the initial table header
 		$('#data').append('<table id="table"><thead><th>Transaction Name</th><th>Category</th>'+
 			'<th>Transaction Kind</th><th>Amount</th><th>Date</th><th>Account</th>'+
 			'</thead><tbody class="list"></tbody></table>');
 		
-		var accounts = results.accounts;
-		var transactions = results.transactionData.transactions;
+		accounts = results.accounts;
+		transactions = results.transactionData.transactions;
+		categories = results.categories;
 
 		// get the total balance for all the accounts
 		function getTotalBalance(accounts) {
@@ -99,7 +102,7 @@ $(document).ready(function() {
 
 		var myTable = $('#table').DataTable({
 			'paging': false,
-			'ordering': false,
+			// 'ordering': false,
 			"info":     false,
 			"columns": [
     			{ "width": "28%" },

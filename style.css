@@ -2,31 +2,32 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 13px;
 	height: 100vh;
-	/*overflow-y: hidden;*/
 }
+
+/*.dataTables tbody tr {
+min-height: 30px;  or whatever height you need to make them all consistent 
+}*/
 
 .category {
 	text-transform: lowercase;
 }
 
-table {
-	/*border-collapse: collapse;*/
-	width: 100%;
-	/*overflow-y: scroll;*/
-} 
+/*table {
+	width: 80%;
+} */
 
 td {
 	border-left: 2px solid #e1e8ed;
 	border-bottom: 1px solid #e1e8ed;
 	border-right: 2px solid #e1e8ed;
 	text-align: left;
-	padding: 5px 15px;
+	/*padding: 5px 0px;*/
 	color: rgba(49, 49, 50, 0.7);
 }
 
 th {
 	text-align: left;
-	padding: 20px;
+	/*padding: 20px;*/
 	background-color: #e1e8ed;
 	color: rgba(49, 49, 50, 0.7);
 }
@@ -39,7 +40,8 @@ tbody {
 	border: 1px solid black;
 }*/
 #results {
-	width: 100%;
+	width: 95%;
+	margin: 0 auto;
 	text-align: center; 
 	/*margin: 5em 0;*/
 }
@@ -49,13 +51,20 @@ tbody {
 }
 
 #balance-and-header {
-	/*width: 95%;*/
-	/*margin: 0 auto;*/
-	/*height: auto;*/
+	position: relative;
 	padding: 3.5em;
 	text-align: center;
 	height: 20%;
 	background-image: linear-gradient(91deg, #13547a, #468e9e);
+}
+
+/*#balance-and-header:after {
+	content: "";
+	display: table;
+	clear: both;
+}*/
+.clearfix {
+	overflow: auto;
 }
 
 button {/* Green */
@@ -72,17 +81,16 @@ button {/* Green */
     font-size: 1.3em;
     margin: 0 3em;
     cursor: pointer;
-    transition: color .3s, background-image .3s;
+    transition: color .3s, background-image .3s, opacity .3;
+    opacity: .7;
 }
 
-button:hover {
+button:hover,
+button.active {
 	background-image: linear-gradient(91deg, #13547a, #468e9e);
 	color: #fff;
 	border: 2px solid #fff;
-}
-
-button.active {
-
+	opacity: 1;
 }
 
 #reset {
@@ -93,10 +101,39 @@ button.active {
 #balance-title {
 	color: #fff;
 	letter-spacing: .3em;
-	font-size: .8em;
+	font-size: .9em;
 }
 #balance-amount {
-	font-size: 2em;
+	font-size: 2.3em;
 	color: #fff;
-	font-weight: light;
+	font-weight: 300;
+}
+
+.person {
+	position: absolute;
+	left: 2.5em;
+	top: 1.2em;
+	text-align: left;
+}
+
+.date-and-time {
+	position: absolute;
+	right: 2.5em;
+	top: 1.2em;
+	text-align: right;
+}
+
+.person,
+.date-and-time {
+	color: #fff;
+	font-size: 1.4em;
+}
+.person p,
+.date-and-time p {
+	font-weight: 300;
+}
+
+.person span,
+.date-and-time span {
+	font-size: 1.5em;
 }
