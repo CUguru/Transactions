@@ -14,7 +14,11 @@ $(document).ready(function() {
 
 	// function that gets passed in once the ajax call is done
 	function parseData(results) {
-		$('main').append('<button type="text" name="search" id="mysearch">account 1</button>');
+		$('main').append('<button type="text" name="search" id="search-1">account 1</button>'+
+			'<button type="text" name="search" id="search-2">account 2</button>'+
+			'<button type="text" name="search" id="search-3">account 3</button>'+
+			'<button type="text" name="search" id="search-4">account 4</button>'+
+			'<button type="text" name="reset" id="reset">Reset</button>');
 		$('#balance-and-header').append('<div id="balance"></div>');
 
 		// make the initial table header
@@ -95,8 +99,20 @@ $(document).ready(function() {
 		});
 
 		var myTable = $('#table').DataTable();
-		$('#mysearch').on('click', function() {
+		$('#search-1').on('click', function() {
 			myTable.search( nameArray[0] ).draw();
+		});
+		$('#search-2').on('click', function() {
+			myTable.search( nameArray[1] ).draw();
+		});
+		$('#search-3').on('click', function() {
+			myTable.search( nameArray[2] ).draw();
+		});
+		$('#search-4').on('click', function() {
+			myTable.search( nameArray[3] ).draw();
+		});
+		$('#reset').on('click', function() {
+			myTable.search( " " ).draw();
 		});
 	}
 
