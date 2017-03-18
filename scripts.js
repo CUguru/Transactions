@@ -123,7 +123,6 @@ $(document).ready(function() {
 
 		var myTable = $('#table').DataTable({
 			'paging': false,
-			"bFilter": true,
 			"info":     false,
 			"columns": [
     			{ "width": "28%" },
@@ -132,7 +131,24 @@ $(document).ready(function() {
     			null,
     			null,
     			{ "width": "15%" }
-    		]
+    		],
+    		initComplete: function () {
+	            this.api().columns(1).every( function () {
+	                var column = this;
+	                var select = $('#dropdown')
+	                    .on( 'change', function () {
+	                        var val = $.fn.dataTable.util.escapeRegex(
+	                            $(this).val()
+	                        );
+	 
+	                        column
+	                            .search( val ? '^'+val+'$' : '', true, false )
+	                            .draw();
+	                    } );
+	 
+	                
+	            } );
+	        }
 		});
 		$('#search-1').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[0] ).draw();
@@ -163,10 +179,6 @@ $(document).ready(function() {
 			$('.active').not($(this)).removeClass('active');
 
 		});
-		$('#dropdown').on('change',function(){
-	        var selectedValue = $(this).val();
-	        myTable.fnFilter("^"+selectedValue+"$", 0, true); //Exact value, column, reg
-	    });
 	}
 
 	setTimeout(getResults, 1000);
