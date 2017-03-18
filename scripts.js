@@ -18,10 +18,12 @@ $(document).ready(function() {
 			'<button type="text" name="search" id="search-2">COMPANION<br>SAVINGS</button>'+
 			'<button type="text" name="search" id="search-3">UNLIMITED<br>CHEQUING</button>'+
 			'<button type="text" name="search" id="search-4">BORDERLESS<br>PLAN</button>'+
-			'<button type="text" name="reset" id="reset">Reset<br></button></div>');
+			'<button type="text" name="reset" id="reset">Reset<br></button><select id="dropdown"></select></div>');
 		$('#balance-and-header').append('<div class="person"><p>Welcome<br><span class="name">Chibuzo</span></p>'+
 			'</div><div id="balance"></div><div class="date-and-time"><p class="date">Thursday, 3rd April, 2017'+
 			'<br><span>7:32PM</span></p></div>');
+
+
 
 		// make the initial table header
 		$('#data').append('<table id="table"><thead><th>Transaction Name</th><th>Category</th>'+
@@ -55,7 +57,6 @@ $(document).ready(function() {
 			return accountIdArray;
 		}
 		var accountArray = getAccountId(accounts);
-		console.log(accountArray);
 
 		
 		function getAccountNames(accounts) {
@@ -65,7 +66,27 @@ $(document).ready(function() {
 			}
 			return accountNameArray;
 		}
+
 		var nameArray = getAccountNames(accounts);
+		
+		function getCategories(categories) {
+			var catArray = [];
+			for(var i = 0; i < categories.length; i++) {
+				catArray.push(categories[i]);
+			}
+			return catArray;
+		}
+
+		var categoriesArray = getCategories(categories);
+		function addDropDown(array) {
+			for(var i = 0; i < array.length; i++) {
+				$('select').append('<option>'+array[i]+'</option>');
+			}
+		}
+		addDropDown(categoriesArray);
+		
+		
+		
 
 		// append the balance to the page
 		$('#balance').append('<span id="balance-title">TOTAL BALANCE</span><br><span id="balance-amount">$ '+sum+'</span>');
@@ -102,7 +123,7 @@ $(document).ready(function() {
 
 		var myTable = $('#table').DataTable({
 			'paging': false,
-			// 'ordering': false,
+			"bFilter": true,
 			"info":     false,
 			"columns": [
     			{ "width": "28%" },
@@ -115,19 +136,37 @@ $(document).ready(function() {
 		});
 		$('#search-1').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[0] ).draw();
+			$('.active').not($(this)).removeClass('active');
+			$(this).toggleClass('active');
+			event.stopPropagation();
 		});
 		$('#search-2').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[1] ).draw();
+			$('.active').not($(this)).removeClass('active');
+			$(this).toggleClass('active');
+			event.stopPropagation();
 		});
 		$('#search-3').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[2] ).draw();
+			$('.active').not($(this)).removeClass('active');
+			$(this).toggleClass('active');
+			event.stopPropagation();
 		});
 		$('#search-4').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[3] ).draw();
+			$('.active').not($(this)).removeClass('active');
+			$(this).toggleClass('active');
+			event.stopPropagation();
 		});
 		$('#reset').on('click', function() {
 			myTable.columns( 5 ).search( " " ).draw();
+			$('.active').not($(this)).removeClass('active');
+
 		});
+		$('#dropdown').on('change',function(){
+	        var selectedValue = $(this).val();
+	        myTable.fnFilter("^"+selectedValue+"$", 0, true); //Exact value, column, reg
+	    });
 	}
 
 	setTimeout(getResults, 1000);

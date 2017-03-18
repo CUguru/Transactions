@@ -35,10 +35,6 @@ tbody {
 	border-bottom: 2px solid #e1e8ed;
 }
 
-/*input {
-	width: 100%;
-	border: 1px solid black;
-}*/
 #results {
 	width: 95%;
 	margin: 0 auto;
@@ -54,15 +50,10 @@ tbody {
 	position: relative;
 	padding: 3.5em;
 	text-align: center;
-	height: 20%;
+	height: 25%;
 	background-image: linear-gradient(91deg, #13547a, #468e9e);
 }
 
-/*#balance-and-header:after {
-	content: "";
-	display: table;
-	clear: both;
-}*/
 .clearfix {
 	overflow: auto;
 }
@@ -95,7 +86,6 @@ button.active {
 
 #reset {
 	margin-top: 3em;
-
 }
 
 #balance-title {
@@ -104,7 +94,7 @@ button.active {
 	font-size: .9em;
 }
 #balance-amount {
-	font-size: 2.3em;
+	font-size: 2.5em;
 	color: #fff;
 	font-weight: 300;
 }
