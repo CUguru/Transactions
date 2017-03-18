@@ -4,30 +4,35 @@ body {
 	height: 100vh;
 }
 
-/*.dataTables tbody tr {
-min-height: 30px;  or whatever height you need to make them all consistent 
-}*/
+a {
+	text-decoration: none;
+	color: #13547a;
+}
+
+img {
+	padding-bottom: 1em;
+}
+
+#selectDiv {
+	position: relative;
+	width: 300px;
+	margin: 5em auto;
+}
 
 .category {
 	text-transform: lowercase;
 }
-
-/*table {
-	width: 80%;
-} */
 
 td {
 	border-left: 2px solid #e1e8ed;
 	border-bottom: 1px solid #e1e8ed;
 	border-right: 2px solid #e1e8ed;
 	text-align: left;
-	/*padding: 5px 0px;*/
 	color: rgba(49, 49, 50, 0.7);
 }
 
 th {
 	text-align: left;
-	/*padding: 20px;*/
 	background-color: #e1e8ed;
 	color: rgba(49, 49, 50, 0.7);
 }
@@ -38,8 +43,7 @@ tbody {
 #results {
 	width: 95%;
 	margin: 0 auto;
-	text-align: center; 
-	/*margin: 5em 0;*/
+	text-align: center;
 }
 
 .buttons {
@@ -58,22 +62,24 @@ tbody {
 	overflow: auto;
 }
 
-button {/* Green */
+button {
+	width: 200px;
     border: 2px solid #13547a;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #13547a;
-    padding: 15px 32px;
+    padding: 20px 12px;
     text-align: center;
     line-height: 1.5em;
     background: transparent;
-    font-weight: light;
+    font-weight: medium;
     letter-spacing: .2em;
     display: inline-block;
-    font-size: 1.3em;
-    margin: 0 3em;
+    font-size: 0.9em;
+    margin: 1em 3em;
     cursor: pointer;
-    transition: color .3s, background-image .3s, opacity .3;
-    opacity: .7;
+    transition: color 1s, background-image .3s, opacity .3;
+    opacity: .4;
+    font-family: 'Roboto';
 }
 
 button:hover,
@@ -127,3 +133,9 @@ button.active {
 .date-and-time span {
 	font-size: 1.5em;
 }
+
+#dropdown {
+	position: relative;
+    display: inline-block;
+}
+

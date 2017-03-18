@@ -1,4 +1,19 @@
 $(document).ready(function() {
+	
+	function loadTime() {
+
+	  var clockElement = document.getElementById( "time" );
+
+	  function updateClock ( clock ) {
+	    time.innerHTML = new Date().toLocaleTimeString();
+	  }
+
+	  setInterval(function () {
+	      updateClock( clockElement );
+	  }, 1000);
+
+	}
+
 	var transactionKind, accounts, transactions, categories, balance, accountName;
 
 	function getData() {
@@ -18,12 +33,11 @@ $(document).ready(function() {
 			'<button type="text" name="search" id="search-2">COMPANION<br>SAVINGS</button>'+
 			'<button type="text" name="search" id="search-3">UNLIMITED<br>CHEQUING</button>'+
 			'<button type="text" name="search" id="search-4">BORDERLESS<br>PLAN</button>'+
-			'<button type="text" name="reset" id="reset">Reset<br></button><select id="dropdown"></select></div>');
+			'<div id="selectDiv"><select id="dropdown"><option>All</option></select></div>'+
+			'<a href="#" id="reset"><img src="reset.svg"><br>Reset</a></div>');
 		$('#balance-and-header').append('<div class="person"><p>Welcome<br><span class="name">Chibuzo</span></p>'+
 			'</div><div id="balance"></div><div class="date-and-time"><p class="date">Thursday, 3rd April, 2017'+
-			'<br><span>7:32PM</span></p></div>');
-
-
+			'<br><span id="time"></span></p></div>');
 
 		// make the initial table header
 		$('#data').append('<table id="table"><thead><th>Transaction Name</th><th>Category</th>'+
@@ -33,7 +47,7 @@ $(document).ready(function() {
 		accounts = results.accounts;
 		transactions = results.transactionData.transactions;
 		categories = results.categories;
-
+		loadTime();
 		// get the total balance for all the accounts
 		function getTotalBalance(accounts) {
 			var balanceArray = [];
@@ -48,7 +62,7 @@ $(document).ready(function() {
 			return a + b;
 		}
 		
-
+		// get all the account id's
 		function getAccountId(accounts) {
 			var accountIdArray = [];
 			for(var i = 0; i < accounts.length; i++) {
@@ -58,7 +72,7 @@ $(document).ready(function() {
 		}
 		var accountArray = getAccountId(accounts);
 
-		
+		// get all the account names
 		function getAccountNames(accounts) {
 			var accountNameArray = [];
 			for(var i = 0; i < accounts.length; i++) {
@@ -85,12 +99,10 @@ $(document).ready(function() {
 		}
 		addDropDown(categoriesArray);
 		
-		
-		
-
 		// append the balance to the page
 		$('#balance').append('<span id="balance-title">TOTAL BALANCE</span><br><span id="balance-amount">$ '+sum+'</span>');
 
+		// for each transaction, populate the table
 		$.each(transactions, function() {
 			// console.log(this.accountId);
 			if(this.category === undefined) {
@@ -121,9 +133,12 @@ $(document).ready(function() {
 				'</td></tr>');
 		});
 
+		// enable filtering and sorting using the Datatables jquery
+		// plugin
 		var myTable = $('#table').DataTable({
 			'paging': false,
 			"info":     false,
+			"dom": 'lrtip',
 			"columns": [
     			{ "width": "28%" },
     			null,
@@ -140,16 +155,24 @@ $(document).ready(function() {
 	                        var val = $.fn.dataTable.util.escapeRegex(
 	                            $(this).val()
 	                        );
-	 
-	                        column
-	                            .search( val ? '^'+val+'$' : '', true, false )
-	                            .draw();
-	                    } );
-	 
-	                
-	            } );
+
+	                        if($(this).val() === 'All') {
+	                        	column
+		                            .search( val ? '' : '' )
+		                            .draw();
+	                        } else {
+	                        	column
+		                            .search( val ? '^'+val+'$' : '', true, false )
+		                            .draw();
+	                        }
+	                    });   
+	            });
 	        }
 		});
+
+		$('select').niceSelect();
+		// filter based on the account Name when the user
+		// clicks the button 
 		$('#search-1').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[0] ).draw();
 			$('.active').not($(this)).removeClass('active');
@@ -174,13 +197,13 @@ $(document).ready(function() {
 			$(this).toggleClass('active');
 			event.stopPropagation();
 		});
-		$('#reset').on('click', function() {
+		$('#reset').on('click', function(e) {
+			e.preventDefault();
 			myTable.columns( 5 ).search( " " ).draw();
 			$('.active').not($(this)).removeClass('active');
 
-		});
-	}
+		});	}
 
-	setTimeout(getResults, 1000);
+	setTimeout(getResults, 700);
 
 });
