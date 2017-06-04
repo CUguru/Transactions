@@ -33,7 +33,7 @@ $(document).ready(function() {
 			'<button type="text" name="search" id="search-2">COMPANION<br>SAVINGS</button>'+
 			'<button type="text" name="search" id="search-3">UNLIMITED<br>CHEQUING</button>'+
 			'<button type="text" name="search" id="search-4">BORDERLESS<br>PLAN</button>'+
-			'<div id="selectDiv"><select id="dropdown"><option>All</option></select></div>'+
+			'<div id="selectDiv"><select id="dropdown"><option>Sort Categories</option></select></div>'+
 			'<a href="#" id="reset"><img src="reset.svg"><br>Reset</a></div>');
 		$('#balance-and-header').append('<div class="person"><p>Welcome<br><span class="name">Chibuzo</span></p>'+
 			'</div><div id="balance"></div><div class="date-and-time"><p class="date">Thursday, 3rd April, 2017'+
@@ -156,7 +156,7 @@ $(document).ready(function() {
 	                            $(this).val()
 	                        );
 
-	                        if($(this).val() === 'All') {
+	                        if($(this).val() === 'Sort Categories') {
 	                        	column
 		                            .search( val ? '' : '' )
 		                            .draw();

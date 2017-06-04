@@ -2,12 +2,9 @@
   -webkit-tap-highlight-color: transparent;
   background-color: #f7f7f7;
   border-radius: 5px;
-  /*border: solid 1px #e8e8e8;*/
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
-  /*display: block;*/
-  /*float: left;*/
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
@@ -17,7 +14,6 @@
   padding-left: 18px;
   padding-right: 30px;
   color: rgba(49, 49, 50, 0.7);
-  /*position: relative;*/
   position: relative;
   text-align: left !important;
   -webkit-transition: all 0.2s ease-in-out;
