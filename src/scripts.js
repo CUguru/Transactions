@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	function loadTime() {
 
 	  var clockElement = document.getElementById( "time" );
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		$('#data').append('<table id="table"><thead><th>Transaction Name</th><th>Category</th>'+
 			'<th>Transaction Kind</th><th>Amount</th><th>Date</th><th>Account</th>'+
 			'</thead><tbody class="list"></tbody></table>');
-		
+
 		accounts = results.accounts;
 		transactions = results.transactionData.transactions;
 		categories = results.categories;
@@ -61,7 +61,7 @@ $(document).ready(function() {
 		function add(a, b) {
 			return a + b;
 		}
-		
+
 		// get all the account id's
 		function getAccountId(accounts) {
 			var accountIdArray = [];
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		}
 
 		var nameArray = getAccountNames(accounts);
-		
+
 		function getCategories(categories) {
 			var catArray = [];
 			for(var i = 0; i < categories.length; i++) {
@@ -98,7 +98,7 @@ $(document).ready(function() {
 			}
 		}
 		addDropDown(categoriesArray);
-		
+
 		// append the balance to the page
 		$('#balance').append('<span id="balance-title">TOTAL BALANCE</span><br><span id="balance-amount">$ '+sum+'</span>');
 
@@ -165,14 +165,14 @@ $(document).ready(function() {
 		                            .search( val ? '^'+val+'$' : '', true, false )
 		                            .draw();
 	                        }
-	                    });   
+	                    });
 	            });
 	        }
 		});
 
 		$('select').niceSelect();
 		// filter based on the account Name when the user
-		// clicks the button 
+		// clicks the button
 		$('#search-1').on('click', function() {
 			myTable.columns( 5 ).search( nameArray[0] ).draw();
 			$('.active').not($(this)).removeClass('active');
